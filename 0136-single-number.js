@@ -52,18 +52,25 @@ function singleNumberBetter(nums) {
 
 var singleNumberExtraFast = function(nums) {
   return nums.reduce((curr, acc) => {
-    console.log(`acc ${acc}`)
-    console.log(`curr ${curr}`)
-    console.log(`returning bitwise XOR ${dec2bin(acc)}^${dec2bin(curr)} ${acc ^ curr}`)
+    console.log(`handling for: ${acc}`)
+    console.log(`returning bitwise XOR: ${acc}^${curr} = ${acc^curr} `)
+    console.log(`acc \t \t ${dec2bin(acc)}`)
+    console.log(`curr \t \t ${dec2bin(curr)}`)
+    console.log(`acc^curr \t ${dec2bin(acc^curr)}`);
     return acc ^ curr
   }, 0)
 };
 
-function dec2bin(dec){
-    return (dec >>> 0).toString(2);
+function dec2bin(nMask) {
+  // nMask must be between -2147483648 and 2147483647
+  for (var nFlag = 0, nShifted = nMask, sMask = ""; nFlag < 32;
+    nFlag++ , sMask += String(nShifted >>> 31), nShifted <<= 1);
+  return sMask;
 }
 
-console.log(singleNumberExtraFast([1, 2, 3, 2, 1]))
+
+
+// console.log(singleNumberExtraFast([1, 2, 3, 2, 1]))
 // console.log(singleNumberExtraFast([1]))
-// console.log(singleNumberExtraFast([-1, 0, 0]))
+console.log(singleNumberExtraFast([-20, 1, 3, 3, 1]))
 // console.log(singleNumberExtraFast([-1, -2, -3, -4, -3, -2, -1,]))
