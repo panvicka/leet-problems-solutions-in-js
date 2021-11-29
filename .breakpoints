@@ -7,6 +7,14 @@
         "version": 644,
         "index": 672
       }
+    ],
+    "0721-accounts-merge.js": [
+      {
+        "id": "131f9cc3-6022-4755-8688-8e67be5cd6c7",
+        "line": 55,
+        "version": 786,
+        "index": 1235
+      }
     ]
   }
 }
