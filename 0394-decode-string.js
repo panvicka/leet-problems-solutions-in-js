@@ -15,25 +15,21 @@ var decodeString = function(s) {
       while (stack[stack.length - 1] != "[") {
         substring = stack.pop() + substring;
         console.log(`not a closing bracket yet, new substring ${substring}`)
-
       }
       stack.pop();
       console.log(`one more pop to remove the openining bracket, stack now ${stack}`);
-
 
       let number = '';
       while (stack && isCharNumber(stack[stack.length - 1])) {
         console.log(`found a number ${stack[stack.length - 1]}`);
         number = stack.pop() + number;
       }
-
       number = parseInt(number);
       console.log(`number of repetitions ${number}, adding to stack`)
       stack.push(substring.repeat(number))
       console.log(stack);
     }
   }
-
   return stack.join('');
 };
 

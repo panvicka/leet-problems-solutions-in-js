@@ -6,7 +6,60 @@
 
 
 let numCourses = 4;
-let prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]];
+let prerequisites = [[0, 3], [1, 2], [1, 3], [3, 2]];
+
+
+var findOrder2 = function(numCourses, prerequisites) {
+  let graph = new Array(numCourses).fill(null);
+  let indegree = new Array(numCourses).fill(0);
+
+  for (let [u, v] of prerequisites) {
+    if (graph[v]) {
+      graph[v].push(u);
+    } else {
+      graph[v] = [u];
+    }
+    indegree[u]++;
+  }
+  console.log(graph);
+  console.log(indegree);
+
+
+  let queue = [];
+
+  for (let i = 0; i < numCourses; i++) {
+    if (indegree[i] == 0) {
+      console.log(`found a starting course ${i}`)
+      queue.push(i);
+    }
+  }
+  if (queue.length == 0) return [];
+
+  let schedule = [];
+
+  while (queue.length > 0) {
+    let courseTaken = queue.shift();
+    console.log(`got ${courseTaken} from top of my queue`);
+    schedule.push(courseTaken);
+    console.log(`my new schedule ${schedule}`);
+    console.log(`neighboard of the course ${graph[courseTaken]}`)
+    if (graph[courseTaken]) {
+      for (course of graph[courseTaken]) {
+        indegree[course]--;
+        if (indegree[course] == 0) {
+          console.log(`i can push ${course} to queue`)
+          queue.push(course);
+        } else {
+          console.log(`i cant push ${course} to queue yet, indegree of ${indegree[course]}`)
+        }
+      }
+    }
+  }
+
+  if (schedule.length == numCourses) return schedule;
+  return [];
+}
+
 
 var findOrder = function(numCourses, prerequisites) {
 
@@ -57,4 +110,4 @@ var findOrder = function(numCourses, prerequisites) {
 
 
 
-console.log(findOrder(numCourses, prerequisites));
+console.log(findOrder2(numCourses, prerequisites));
