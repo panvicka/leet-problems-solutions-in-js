@@ -3,6 +3,7 @@ class Node {
     this.val = val;
     this.left = null;
     this.right = null;
+    this.next = null;
   }
 }
 
@@ -24,8 +25,8 @@ function insertLevelOrder(arr, root, i) {
 }
 
 module.exports = {
- Node,
- insertLevelOrder
+  Node,
+  insertLevelOrder
 }
 
 
