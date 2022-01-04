@@ -35,5 +35,34 @@ console.log(searchInsert(nums, target));
 //1
 nums = [1, 3, 5, 6];
 target = 2;
-console.log(searchInsert(nums, target)); 
+console.log(searchInsert(nums, target));
 
+var searchInsertPractice = function(nums, target) {
+
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) {
+    let pivot = Math.floor((left + right) / 2);
+
+    if (nums[pivot] > target) {
+      right = pivot - 1;
+    } else if (nums[pivot] < target) {
+      left = left + 1;
+    } else {
+      return pivot;
+    }
+  }
+  return left;
+}
+
+
+//2 
+nums = [1, 3, 5, 6];
+target = 5;
+console.log(searchInsertPractice(nums, target));
+
+//1
+nums = [1, 3, 5, 6];
+target = 2;
+console.log(searchInsertPractice(nums, target));

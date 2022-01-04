@@ -50,4 +50,30 @@ var solution = function(isBadVersion) {
 console.log(solution(isBadVersion));
 
 
+// PRACTICE 
+n = 5;
+bad = 4;
+
+var solutionPractice = function(isBadVersion) {
+
+  let left = 0;
+  let right = n;
+
+  while (left <= right) {
+    let pivot = Math.floor((left + right) / 2);
+    if (isBadVersion(pivot) == true) {
+      right = pivot - 1;
+    } else {
+      left = pivot + 1;
+    }
+  }
+
+  return left;
+
+}
+
+console.log(solutionPractice(isBadVersion));
+
+
+
 

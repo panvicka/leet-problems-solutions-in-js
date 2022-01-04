@@ -26,10 +26,10 @@ var search = function(nums, target) {
     if (nums[pivot] > target) {
       console.log(`number at pivot too large ${nums[pivot]}`);
       right = pivot - 1;
-    } else  {
+    } else {
       console.log(`number at pivot too small ${nums[pivot]}`);
       left = pivot;
-    }  
+    }
     console.log(`new left ${left} and right ${right}`);
   }
   if (nums[left] === target) return left;
@@ -38,7 +38,32 @@ var search = function(nums, target) {
 
 let nums = [-1, 0, 3, 5, 9, 12];
 let target = 2;
-nums = [5];
-target = 5;
+// nums = [5];
+// target = 5;
 
 console.log(search(nums, target));
+
+// PRACTICE
+
+
+var searchPractice = function(nums, target) {
+
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) {
+    let pivot = Math.floor((left + right) / 2);
+
+    if (nums[pivot] < target) {
+      left = pivot + 1;
+    } else if (nums[pivot] > target) {
+      right = pivot - 1;
+    } else {
+      return pivot;
+    }
+  }
+
+  return -1;
+}
+
+console.log(searchPractice(nums, target));
