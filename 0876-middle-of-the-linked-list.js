@@ -40,3 +40,18 @@ var middleNode = function(head) {
 };
 
 console.log(middleNode(n1));
+
+
+var middleNode2 = function(head) {
+
+  let fast = head;
+  let slow = head;
+
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  return slow;
+
+}
