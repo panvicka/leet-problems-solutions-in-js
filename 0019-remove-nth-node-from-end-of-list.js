@@ -79,10 +79,12 @@ var removeNthFromEnd2pointer = function(head, n) {
 
   let slow = dummy;
   let fast = dummy;
-
+   
   while (n--) {
     fast = fast.next
   }
+  console.log(`my fast`)
+  console.log(fast)
 
   while (fast.next) {
     [slow, fast] = [slow.next, fast.next]
